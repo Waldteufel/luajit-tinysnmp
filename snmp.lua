@@ -295,14 +295,15 @@ function table_next(state)
 	local res = {}
 	local s = state[1]
 	table.insert(res, s.f(s.buf))
-	if not snmp.match_oid(res[1].oid, state.base) then
+	local index = snmp.match_oid(res[1].oid, state.base)
+	if index == nil then
 		return nil
 	end
 	for i = 2,#state do
 		s = state[i]
 		table.insert(res, s.f(s.buf))
 	end
-	return unpack(res)
+	return index, unpack(res)
 end
 
 function SNMPClient:table(...)
