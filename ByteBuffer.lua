@@ -3,6 +3,8 @@
 local bit = require('bit')
 local ffi = require('ffi')
 
+-- ByteBuffer represents a (slice of a) string with a read cursor.
+
 local ByteBuffer = {}
 local ByteBuffer_mt = { __index = ByteBuffer }
 

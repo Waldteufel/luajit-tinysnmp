@@ -3,6 +3,8 @@
 local bit = require('bit')
 local ByteBuffer = require('ByteBuffer')
 
+-- This implements the ASN.1 Binary Encoding Rules.
+
 local ber = {}
 
 ber.INTEGER = 0x02

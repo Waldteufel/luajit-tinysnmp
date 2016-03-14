@@ -4,6 +4,8 @@ local socket = require('socket')
 local ber = require('ber')
 local ByteBuffer = require('ByteBuffer')
 
+-- This implements the read-part of the SNMPv2c protocol.
+
 local snmp = {}
 
 snmp.Counter32 = 0x41
@@ -19,6 +21,11 @@ snmp.PDU_REPLY = 0xA2
 snmp.PDU_GETBULK = 0xA5
 
 function snmp.oid(arg)
+	-- example usage:
+	--		local internet = snmp.oid '1.3.6.1'
+	--		local system = snmp.oid { internet, '2.1.1' }
+	--		local sysName = snmp.oid { system, 5 }
+
 	local res = ''
 	local iter, state
 
